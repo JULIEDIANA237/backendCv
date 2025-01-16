@@ -174,4 +174,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 }); 
 
-//module.exports = app; // Exporter l'application pour Vercel
+ module.exports = app; // Exporter l'application pour Vercel
