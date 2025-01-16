@@ -169,9 +169,9 @@ app.get('/api/user-data/:sessionId', (req, res) => {
 });
 
 // Lancer le serveur
-/*const PORT = process.env.PORT || 5000;
+ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-});*/
+}); 
 
-module.exports = app; // Exporter l'application pour Vercel
+//module.exports = app; // Exporter l'application pour Vercel
