@@ -13,7 +13,10 @@ const userDataStore = new Map(); // Stockage temporaire des données utilisateur
 const app = express();
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Autorise uniquement votre frontend
+    origin: [
+      'http://localhost:5173', // Frontend local
+      'https://generate-cv-seven.vercel.app/', // Frontend déployé
+    ],
     methods: ['GET', 'POST'], // Autorise les méthodes nécessaires
     credentials: true, // Si vous utilisez des cookies ou des sessions
   })
