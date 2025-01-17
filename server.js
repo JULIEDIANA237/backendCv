@@ -17,12 +17,25 @@ app.use(
       'http://localhost:5173', // Frontend local
       'https://generate-cv-seven.vercel.app', // Frontend déployé
     ],
-    methods: ['GET', 'POST'], // Autorise les méthodes nécessaires
+    methods: ['GET', 'POST', 'OPTIONS'], // Inclure OPTIONS pour les requêtes preflight
+    allowedHeaders: ['Content-Type', 'Authorization'], // Autorisez les en-têtes nécessaires
     credentials: true, // Si vous utilisez des cookies ou des sessions
   })
 );
 
 app.use(bodyParser.json());
+app.options('*', cors()); // Répondre aux requêtes OPTIONS pour toutes les routes
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://generate-cv-seven.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204); // Répondre avec succès aux requêtes OPTIONS
+  }
+  next();
+});
+
 
 // Configuration des variables d'environnement
 const CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
