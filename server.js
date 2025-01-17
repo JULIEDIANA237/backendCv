@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173', // Frontend local
-      'https://generate-cv-seven.vercel.app/', // Frontend déployé
+      'https://generate-cv-seven.vercel.app', // Frontend déployé
     ],
     methods: ['GET', 'POST'], // Autorise les méthodes nécessaires
     credentials: true, // Si vous utilisez des cookies ou des sessions
